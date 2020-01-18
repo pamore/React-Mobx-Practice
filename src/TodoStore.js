@@ -23,7 +23,7 @@ export class TodoStore {
         );
         let result = "Next TODO: "
             + (nextTodo ? nextTodo.task : null)
-            + "    "
+            + ". "
             + "Progress: " + this.completedCount + "/" + this.todoList.length;
         // console.log(result);
         return result ;
@@ -32,7 +32,7 @@ export class TodoStore {
         this.todoList.push({
             task: task,
             completed: false,
-            assignee: null
+            assignee: ""
         })
     }
 }

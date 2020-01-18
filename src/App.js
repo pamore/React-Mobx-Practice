@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import {TodoStore} from './TodoStore';
+import {TodoListView} from "./TodoListView";
+import {observable} from "mobx";
 
 function App() {
   let todoStore = new TodoStore();
@@ -10,9 +12,17 @@ function App() {
   todoStore.todoList[1].task = "Task 2a";
   todoStore.todoList[0].task = "Task 1a";
 
+  let peopleStore = observable([
+    {name: "Mike"},
+    {name: "Bob"}
+  ]);
+
+  todoStore.todoList[0].assignee = peopleStore[1].name;
+  todoStore.todoList[1].assignee = peopleStore[0].name;
+
   return (
     <div className="App">
-      Running...{todoStore.todoList.length}
+      <TodoListView store={todoStore}/>
     </div>
   );
 }
