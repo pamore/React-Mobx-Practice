@@ -26,7 +26,7 @@ function App() {
             <div className="App">
                 <TodoListView store={todoStore}/>
             </div>
-            <div class="Game">
+            <div className="Game">
                 <Game/>
             </div>
         </div>
