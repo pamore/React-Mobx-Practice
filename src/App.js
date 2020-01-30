@@ -4,9 +4,11 @@ import {TodoStore} from './MobxTutorial/TodoStore';
 import {TodoListView} from "./MobxTutorial/TodoListView";
 import {observable} from "mobx";
 import {Game} from "./TicTacToeGame/Game";
+import {TicTacToeStore} from "./TicTacToeGame/TicTacToeStore";
 
 function App() {
     let todoStore = new TodoStore();
+    let ticTacToeStore = new TicTacToeStore();
     todoStore.addTodo("Task 1");
     todoStore.addTodo("Task 2");
     todoStore.todoList[0].completed = true;
@@ -27,7 +29,7 @@ function App() {
                 <TodoListView store={todoStore}/>
             </div>
             <div className="Game">
-                <Game/>
+                <Game store={ticTacToeStore}/>
             </div>
         </div>
     );
