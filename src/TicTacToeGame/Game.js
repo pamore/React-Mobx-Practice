@@ -16,10 +16,11 @@ export class Game extends React.Component{
         if(this.calculateWinner(tempSquare) || tempSquare[i]){
             return;
         }
-        tempSquare[i] = this.props.store.actionsByXIsNext[this.state.xIsNext];
+        tempSquare[i] = this.props.store.actionsByXIsNext[this.props.store.xIsNext];
         this.setState({
             xIsNext: !this.state.xIsNext
         });
+        this.props.store.recordMoveCompleted();
         this.props.store.addBoardToHistory(tempSquare);
     }
     calculateWinner(squares) {
@@ -41,21 +42,15 @@ export class Game extends React.Component{
         }
         return null;
     }
-    isGameOver(squares) {
-        for(let j = 0; j< squares.length; j++) {
-            if(squares[j] == null){
-                return false;
-            }
-        }
-        return true;
-    }
+
     render() {
         let current = this.props.store.squares;
         let winner = this.calculateWinner(current);
-        let status = 'Next player: ' + this.props.store.actionsByXIsNext[this.state.xIsNext];
+        let isXNext = this.props.store.xIsNext;
+        let status = 'Next player: ' + this.props.store.actionsByXIsNext[isXNext];
         if (winner) {
             status = 'Winner: ' + winner;
-        } else if (this.isGameOver(current)) {
+        } else if (this.props.store.movesCompleted === 9) {
             status = 'Game Over. Draw.'
         }
         return (
