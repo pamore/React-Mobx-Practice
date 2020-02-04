@@ -2,27 +2,25 @@ import * as React from "react";
 import {Board} from "./Board";
 import './Game.css';
 import {observer} from "mobx-react";
-import {TicTacToeStore} from "./TicTacToeStore";
+import {TimeTravelSection} from "./TimeTravelSection";
 
-export class Game extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            xIsNext: true
-        }
+class Game extends React.Component {
+
+    handleButtonClick(i) {
+        console.log(1);
+        this.props.store.goBackToStep(i);
     }
-    handleClick(i) {
+
+    handleSquareClick(i) {
         let tempSquare = this.props.store.squares.slice();
-        if(this.calculateWinner(tempSquare) || tempSquare[i]){
+        if (this.calculateWinner(tempSquare) || tempSquare[i]) {
             return;
         }
         tempSquare[i] = this.props.store.actionsByXIsNext[this.props.store.xIsNext];
-        this.setState({
-            xIsNext: !this.state.xIsNext
-        });
         this.props.store.recordMoveCompleted();
         this.props.store.addBoardToHistory(tempSquare);
     }
+
     calculateWinner(squares) {
         const lines = [
             [0, 1, 2],
@@ -54,23 +52,29 @@ export class Game extends React.Component{
             status = 'Game Over. Draw.'
         }
         return (
-            <div className="game">
-                <div className="logo">
-                    Tic Tac Toe Game
+            <div>
+                <div className="game">
+                    <div className="logo">
+                        Tic Tac Toe Game
+                    </div>
+                    <div className="game-board">
+                        <Board
+                            onClickSquare={(i) => this.handleSquareClick(i)}
+                            squares={current}
+                        />
+                    </div>
+                    <div className="game-info">
+                        <div>{status}</div>
+                    </div>
                 </div>
-                <div className="game-board">
-                    <Board
-                        onClickSquare={(i) => this.handleClick(i)}
-                        squares={current}
-                    />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol></ol>
-                </div>
+                <br/>
+                <TimeTravelSection
+                    onClickButton={(i) => this.handleButtonClick(i)}
+                />
             </div>
+
         );
     }
 }
 
-observer(TicTacToeStore);
+export default observer(Game);

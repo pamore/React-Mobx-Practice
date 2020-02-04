@@ -3,7 +3,7 @@ import './App.css';
 import {TodoStore} from './MobxTutorial/TodoStore';
 import {TodoListView} from "./MobxTutorial/TodoListView";
 import {observable} from "mobx";
-import {Game} from "./TicTacToeGame/Game";
+import Game from "./TicTacToeGame/Game";
 import {TicTacToeStore} from "./TicTacToeGame/TicTacToeStore";
 
 function App() {
