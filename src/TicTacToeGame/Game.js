@@ -7,7 +7,7 @@ import {TimeTravelSection} from "./TimeTravelSection";
 class Game extends React.Component {
 
     handleButtonClick(i) {
-        console.log(1);
+        console.log(i);
         this.props.store.goBackToStep(i);
     }
 
@@ -70,6 +70,7 @@ class Game extends React.Component {
                 <br/>
                 <TimeTravelSection
                     onClickButton={(i) => this.handleButtonClick(i)}
+                    moves={this.props.store.movesCompleted}
                 />
             </div>
 

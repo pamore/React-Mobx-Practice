@@ -29,8 +29,13 @@ export class TicTacToeStore {
     goBackToStep(i) {
         let newHistory = this.history.slice(0, i+1);
         this.history = newHistory;
-        this.squares = this.history[this.history.length-1].squares;
-        this.movesCompleted = 0;
+
+        this.squares = i===0
+            ?
+            this.history[this.history.length-1].squares.slice()
+            :
+            this.history[this.history.length-1];
+        this.movesCompleted = i;
         this.xIsNext = true;
     }
 }
