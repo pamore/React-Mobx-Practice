@@ -18,7 +18,9 @@ export class TicTacToeStore {
 
     addBoardToHistory(squares) {
         this.squares = squares;
-        this.history.push(this.squares);
+        this.history.push({
+            squares: this.squares
+        });
     }
 
     recordMoveCompleted() {
@@ -27,14 +29,9 @@ export class TicTacToeStore {
     }
 
     goBackToStep(i) {
-        let newHistory = this.history.slice(0, i+1);
-        this.history = newHistory;
+        this.history = this.history.slice(0, i + 1);
 
-        this.squares = i===0
-            ?
-            this.history[this.history.length-1].squares.slice()
-            :
-            this.history[this.history.length-1];
+        this.squares = this.history[this.history.length-1].squares.slice();
         this.movesCompleted = i;
         this.xIsNext = true;
     }
