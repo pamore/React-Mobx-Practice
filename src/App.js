@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import {TodoStore} from './MobxTutorial/TodoStore';
-import {TodoListView} from "./MobxTutorial/TodoListView";
+import {TodoStore} from './main/MobxTutorial/TodoStore';
+import {TodoListView} from "./main/MobxTutorial/TodoListView";
 import {observable} from "mobx";
-import Game from "./TicTacToeGame/Game";
-import {TicTacToeStore} from "./TicTacToeGame/TicTacToeStore";
+import Game from "./main/TicTacToeGame/Game";
+import {TicTacToeStore} from "./main/TicTacToeGame/TicTacToeStore";
 
 function App() {
     let todoStore = new TodoStore();
@@ -24,11 +24,13 @@ function App() {
     todoStore.todoList[1].assignee = peopleStore[0].name;
 
     return (
-        <div>
-            <div className="App">
+        <div className="App">
+            <div className="todo">
+                <h2>TO DO List - </h2>
                 <TodoListView store={todoStore}/>
             </div>
             <div className="Game">
+                <h2>Tic Tac Toe Game</h2>
                 <Game store={ticTacToeStore}/>
             </div>
         </div>

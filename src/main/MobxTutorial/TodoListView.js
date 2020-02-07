@@ -8,7 +8,7 @@ export class TodoListView extends React.Component {
         return (
             <div>
                 {store.report}
-                <ul>
+                <ul data-testid="todoListView">
                     {store.todoList.map( (todo, idx) => <TodoView todo={todo} key={idx}/>)}
                 </ul>
                 <button onClick={this.onNewTodo}>New TODO</button>

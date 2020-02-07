@@ -53,9 +53,6 @@ class Game extends React.Component {
         return (
             <div>
                 <div className="game">
-                    <div className="logo">
-                        Tic Tac Toe Game
-                    </div>
                     <div className="game-board">
                         <Board
                             onClickSquare={(i) => this.handleSquareClick(i)}

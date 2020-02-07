@@ -4,11 +4,10 @@ export class TimeTravelSection extends React.Component {
 
     renderButtons() {
         let buttons = [];
-        let i = 0;
         buttons.push(
             this.getButton(0)
         );
-        for (i = 1; i < this.props.moves; i++) {
+        for (let i = 1; i < this.props.moves; i++) {
             buttons.push(this.getButton(i));
         }
         return buttons;
