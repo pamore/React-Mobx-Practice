@@ -21,12 +21,10 @@ export class TodoStore {
         let nextTodo = this.todoList.find(
             todo => todo.completed === false
         );
-        let result = "Next TODO: "
+        return "Next TODO: "
             + (nextTodo ? nextTodo.task : null)
             + ". "
-            + "Progress: " + this.completedCount + "/" + this.todoList.length;
-        // console.log(result);
-        return result ;
+            + "Progress: " + this.completedCount + "/" + this.todoList.length ;
     }
     addTodo(task){
         this.todoList.push({
