@@ -1,9 +1,9 @@
 import React from "react";
-import {getByTestId} from "@testing-library/dom";
+import {getAllByTestId, getByTestId} from "@testing-library/dom";
 import {cleanup, render} from "@testing-library/react";
 import {TodoListView} from "../../main/MobxTutorial/TodoListView";
 
-describe('test for a list of TODO view', () => {
+describe('TODO List view', () => {
 
     beforeEach(() => {
         const test_todoList = [{
@@ -15,7 +15,10 @@ describe('test for a list of TODO view', () => {
             completed: true,
             assignee: ""
         }];
-        const test_Store = {todoList: test_todoList};
+        const test_Store = {
+            todoList: test_todoList,
+            report: "Next TODO: task 1. Progress: 1/2"
+        };
         render(<TodoListView store={test_Store}/>);
     });
 
@@ -27,4 +30,19 @@ describe('test for a list of TODO view', () => {
         let childrenElements = getByTestId(document.body, "todoListView").children;
         expect(childrenElements.length).toBe(2);
     });
+
+    it('check if the todo header is rendered with progress details', () => {
+        let reportString = getByTestId(document.body, "progressHeader");
+        expect(reportString.textContent).toBe("Next TODO: task 1. Progress: 1/2");
+    });
+
+    it('check if the todo list is rendered with the right tasks checked', () => {
+        let childrenElements = getByTestId(document.body, "todoListView").children;
+        expect(childrenElements.length).toBe(2);
+        let checkBox1 = getAllByTestId(document.body, "todoItem")[0].firstChild;
+        expect(checkBox1.checked).toBe(false);
+        let checkBox2 = getAllByTestId(document.body, "todoItem")[1].firstChild;
+        expect(checkBox2.checked).toBe(true);
+    });
+
 });

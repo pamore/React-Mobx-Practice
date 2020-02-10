@@ -7,7 +7,7 @@ export class TodoListView extends React.Component {
         const store = this.props.store;
         return (
             <div>
-                {store.report}
+                <h4 data-testid="progressHeader">{store.report}</h4>
                 <ul data-testid="todoListView">
                     {store.todoList.map( (todo, idx) => <TodoView todo={todo} key={idx}/>)}
                 </ul>

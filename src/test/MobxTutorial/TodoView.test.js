@@ -3,7 +3,7 @@ import {TodoView} from "../../main/MobxTutorial/TodoView";
 import {cleanup, fireEvent, render} from '@testing-library/react'
 import {getAllByText, getByTestId, getByText} from "@testing-library/dom";
 
-describe('test for one TODO view.', () => {
+describe('TODO view', () => {
 
     beforeEach(() => {
         const test_todo = {
