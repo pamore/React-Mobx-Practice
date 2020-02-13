@@ -45,4 +45,8 @@ describe('TODO List view', () => {
         expect(checkBox2.checked).toBe(true);
     });
 
+    // it('check if the prompt pops up on clicking new todo button', () => {
+    //     let newTodoButton = getByTestId(document.body, "newTodoButton");
+    //
+    // });
 });

@@ -33,7 +33,7 @@ export class TicTacToeStore {
 
         this.squares = this.history[this.history.length-1].squares.slice();
         this.movesCompleted = i;
-        this.xIsNext = true;
+        this.xIsNext = i % 2 === 0;
     }
 }
 

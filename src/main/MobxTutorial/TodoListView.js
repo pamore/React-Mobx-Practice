@@ -11,11 +11,11 @@ export class TodoListView extends React.Component {
                 <ul data-testid="todoListView">
                     {store.todoList.map( (todo, idx) => <TodoView todo={todo} key={idx}/>)}
                 </ul>
-                <button onClick={this.onNewTodo}>New TODO</button>
+                <button data-testid="newTodoButton" onClick={this.onNewTodo}>New TODO</button>
             </div>);
     }
     onNewTodo = () => {
-        this.props.store.addTodo(prompt('Enter new Todo:', 'Test task'))
+        this.props.store.addTodo(window.prompt('Enter new Todo:', 'Test task'))
     }
 }
 

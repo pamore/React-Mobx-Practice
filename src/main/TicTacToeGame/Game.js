@@ -41,7 +41,7 @@ class Game extends React.Component {
     }
 
     render() {
-        let current = this.props.store.squares;
+        let current = (this.props.store.squares)===null? []: this.props.store.squares;
         let winner = this.calculateWinner(current);
         let isXNext = this.props.store.xIsNext;
         let status = 'Next player: ' + this.props.store.actionsByXIsNext[isXNext];
