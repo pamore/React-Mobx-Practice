@@ -22,7 +22,7 @@ describe('Board view', () => {
         cleanup();
     });
 
-    it('check if all nine squares are rendered', () => {
+    it('should have all nine squares rendered', () => {
         let boardRows = getAllByTestId(document.body, "boardRow");
         expect(boardRows.length).toBe(3);
         expect(boardRows[0].children.length).toBe(3);
@@ -30,7 +30,7 @@ describe('Board view', () => {
         expect(boardRows[2].children.length).toBe(3);
     });
 
-    it('click on square should trigger onClick passed in props', () => {
+    it('cshould trigger onClick passed to squares', () => {
         let squareElement = document.body.querySelectorAll(".square");
         fireEvent.click(squareElement[0]);
         fireEvent.click(squareElement[1]);

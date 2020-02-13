@@ -26,17 +26,17 @@ describe('TODO List view', () => {
         cleanup();
     });
 
-    it('check if the todo list is rendered', () => {
+    it('should have the todo list rendered', () => {
         let childrenElements = getByTestId(document.body, "todoListView").children;
         expect(childrenElements.length).toBe(2);
     });
 
-    it('check if the todo header is rendered with progress details', () => {
+    it('should render the todo header with progress details', () => {
         let reportString = getByTestId(document.body, "progressHeader");
         expect(reportString.textContent).toBe("Next TODO: task 1. Progress: 1/2");
     });
 
-    it('check if the todo list is rendered with the right tasks checked', () => {
+    it('should render todo list with the right tasks checked', () => {
         let childrenElements = getByTestId(document.body, "todoListView").children;
         expect(childrenElements.length).toBe(2);
         let checkBox1 = getAllByTestId(document.body, "todoItem")[0].firstChild;

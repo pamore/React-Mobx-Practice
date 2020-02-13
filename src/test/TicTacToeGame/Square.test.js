@@ -16,12 +16,12 @@ describe('Square view', () => {
     afterEach(() => {
         cleanup();
     });
-    it('click on square should have value passed', () => {
+    it('should have value passed', () => {
         let squareElement = document.body.querySelector(".square");
         expect(squareElement.textContent).toBe('test');
     });
 
-    it('click on square should trigger onClick passed', () => {
+    it('should trigger onClick passed', () => {
         let squareElement = document.body.querySelector(".square");
         fireEvent.click(squareElement);
         fireEvent.click(squareElement);

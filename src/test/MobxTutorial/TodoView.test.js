@@ -18,14 +18,14 @@ describe('TODO view', () => {
         cleanup();
     });
 
-    it('check if the todo item is rendered', () => {
+    it('should render the todo item', () => {
         let todoItem = getByTestId(document.body, "todoItem");
         expect(todoItem).not.toBeNull();
         expect(getByText(todoItem, "task")).not.toBeNull();
         expect(getAllByText(todoItem, "task").length).toBe(1);
     });
 
-    it('todo item should be checked on click', () => {
+    it('should have item checked on click', () => {
         let checkbox = getByTestId(document.body, "todoItem").firstChild;
         expect(checkbox.checked).toBe(false);
         fireEvent.change(checkbox, {target: {checked: true}});

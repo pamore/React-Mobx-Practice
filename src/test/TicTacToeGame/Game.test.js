@@ -19,7 +19,7 @@ describe('Game view', () => {
         cleanup();
     });
 
-    it('check that board is rendered', () => {
+    it('should have that board rendered', () => {
         expect(1===1).toBe(true);
     });
 });
