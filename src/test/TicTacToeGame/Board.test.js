@@ -1,7 +1,6 @@
 import React from "react";
-import {cleanup, fireEvent, render} from "@testing-library/react";
+import {cleanup, fireEvent, render, getAllByTestId} from "@testing-library/react";
 import {Board} from "../../main/TicTacToeGame/Board";
-import {getAllByTestId} from "@testing-library/dom";
 
 describe('Board view', () => {
 

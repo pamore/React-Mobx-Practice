@@ -18,6 +18,7 @@ export class TimeTravelSection extends React.Component {
             <li key={i}>
                 <button
                     className="timeTravelButton"
+                    data-testid="timeTravelButton"
                     onClick={() => (this.props.onClickButton(i))}
                 >
                     {i === 0 ? "RestartGame" : "Go to move #" + i}

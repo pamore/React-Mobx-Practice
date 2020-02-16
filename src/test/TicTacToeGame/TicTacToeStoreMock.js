@@ -1,7 +1,7 @@
 import {action, decorate, observable} from "mobx";
 
-export class TicTacToeStore {
-    history = [];
+export class TicTacToeStoreMock {
+    historyStub = [];
     squares = Array(9).fill(null);
     xIsNext = true;
     actionsByXIsNext = {
@@ -11,14 +11,14 @@ export class TicTacToeStore {
     movesCompleted = 0;
 
     constructor() {
-        this.history.push({
+        this.historyStub.push({
             squares: this.squares
         });
     }
 
-    addBoardToHistory(squares) {
-        this.squares = squares;
-        this.history.push({
+    addBoardToHistory(squaresStub) {
+        this.squares = squaresStub;
+        this.historyStub.push({
             squares: this.squares
         });
     }
@@ -29,20 +29,20 @@ export class TicTacToeStore {
     }
 
     goBackToStep(i) {
-        this.history = this.history.slice(0, i + 1);
+        this.historyStub = this.historyStub.slice(0, i + 1);
 
-        this.squares = this.history[this.history.length-1].squares.slice();
+        this.squares = this.historyStub[this.historyStub.length-1].squares.slice();
         this.movesCompleted = i;
         this.xIsNext = i % 2 === 0;
     }
 }
 
-decorate(TicTacToeStore, {
-    history: observable,
+decorate(TicTacToeStoreMock, {
+    historyStub: observable,
     squares: observable,
     xIsNext:observable,
     movesCompleted: observable,
-    addBoardToHistory: action,
-    recordMoveCompleted: action,
-    goBackToStep: action
+    addBoardToHistory: action.bound,
+    recordMoveCompleted: action.bound,
+    goBackToStep: action.bound
 });
