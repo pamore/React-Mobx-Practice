@@ -33,13 +33,6 @@ function App() {
                 <h2>Tic Tac Toe Game</h2>
                 <Game
                     store={ticTacToeStore}
-                    // recordMoveCompleted={ticTacToeStore.recordMoveCompleted}
-                    // addBoardToHistory={ticTacToeStore.addBoardToHistory}
-                    // actionsByXIsNext={ticTacToeStore.actionsByXIsNext}
-                    // getMovesCompleted={ticTacToeStore.getMovesCompleted}
-                    // goBackToStep={ticTacToeStore.goBackToStep}
-                    // getXIsNext={ticTacToeStore.getXIsNext}
-                    // getCurrentSquare={ticTacToeStore.getCurrentSquare}
                 />
             </div>
         </div>

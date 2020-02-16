@@ -133,6 +133,7 @@ describe('Game view', () => {
         expect(getTextAt(2,1)).toBe('');
         expect(getTextAt(2,2)).toBe('');
 
+        expect(getAllByTestId(document.body, "timeTravelButton").length).toBe(2);
         expect(status.textContent).toBe("Next player: X");
     });
 

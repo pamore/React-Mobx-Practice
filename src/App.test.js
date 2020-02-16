@@ -8,5 +8,11 @@ describe('App view', () => {
     const toDoHeader = getByText("TO DO List -");
     expect(toDoHeader).toBeInTheDocument();
   });
+
+  it('should render the Tic Tac Toe Game', () => {
+    const { getByText } = render(<App />);
+    const ticTacToeGameHeader = getByText("Tic Tac Toe Game");
+    expect(ticTacToeGameHeader).toBeInTheDocument();
+  });
 });
 
