@@ -5,7 +5,7 @@ import {TodoListView} from "./main/MobxTutorial/TodoListView";
 import {observable} from "mobx";
 import Game from "./main/TicTacToeGame/Game";
 import {TicTacToeStore} from "./main/TicTacToeGame/TicTacToeStore";
-import {StateHook} from './main/hooks-practice/StateHook'
+import {Hooks} from './main/hooks-practice/Hooks'
 
 function App() {
     let todoStore = new TodoStore();
@@ -26,8 +26,8 @@ function App() {
 
     return (
         <div className="App">
-            <div>
-                <StateHook></StateHook>
+            <div className="hooks">
+                <Hooks/>
                 <br/>
             </div>
             <hr/>
@@ -35,6 +35,7 @@ function App() {
                 <h2>TO DO List - </h2>
                 <TodoListView store={todoStore}/>
             </div>
+            <br/>
             <hr/>
             <div className="Game">
                 <h2>Tic Tac Toe Game</h2>
