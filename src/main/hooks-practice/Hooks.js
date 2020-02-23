@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Hooks.css';
 
 export function Hooks() {
@@ -10,7 +10,7 @@ export function Hooks() {
 
     const getSelectOptions = ((property) =>
             <select value={car[property]} onChange={(event) => setCar({...car, [property]: event.target.value})}>
-                <option value="">-Select-</option>
+                <option value="">--Select--</option>
                 <option value={property + " 1"}>{property + " 1"}</option>
                 <option value={property + " 2"}>{property + " 2"}</option>
                 <option value={property + " 3"}>{property + " 3"}</option>
@@ -19,7 +19,17 @@ export function Hooks() {
             </select>
     );
 
-    let submitButton = car.Brand !== "" && car.Model !== "" && car.Year !== "" && (<button onClick={() => alert("clicked")}>Submit</button>);
+    var message = "";
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        message = "This car is available in dealership near you : \n" + car.Brand + " - " + car.Model + " - " + car.Year;
+    }, [car]);
+
+    let submitButton = car.Brand !== "" && car.Model !== "" && car.Year !== "" && (
+        <button onClick={() => alert(message)}>Submit</button>);
+
+    const result = car.Brand !== "" && car.Model !== "" && car.Year !== "" && (<>Result
+        : {car.Brand} - {car.Model} - {car.Year}</>);
 
     return (
         <div>
@@ -37,11 +47,10 @@ export function Hooks() {
                     Year : &nbsp;
                     {getSelectOptions("Year")}
                 </label>
-                <br/>
-                <label className="hookResult">Result : {car.Brand} - {car.Model} - {car.Year}</label>
-                <br/>
-                {submitButton
-                }
+                <br/><br/>
+                <label className="hookResult">{result}</label>
+                <br/><br/>
+                {submitButton}
             </div>
         </div>
     );
