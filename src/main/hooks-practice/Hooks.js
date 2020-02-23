@@ -25,11 +25,20 @@ export function Hooks() {
         message = "This car is available in dealership near you : \n" + car.Brand + " - " + car.Model + " - " + car.Year;
     }, [car]);
 
-    let submitButton = car.Brand !== "" && car.Model !== "" && car.Year !== "" && (
-        <button onClick={() => alert(message)}>Submit</button>);
+    let submitButton = car.Brand !== "" && car.Model !== "" && car.Year !== "" &&
+        (<>
+            <br/>
+            <br/>
+            <button onClick={() => alert(message)}>Submit</button>
+        </>);
 
-    const result = car.Brand !== "" && car.Model !== "" && car.Year !== "" && (<>Result
-        : {car.Brand} - {car.Model} - {car.Year}</>);
+    const result = car.Brand !== "" && car.Model !== "" && car.Year !== "" &&
+        (<>
+            <br/><br/>
+            <label className="hookResult">
+                Result : {car.Brand} - {car.Model} - {car.Year}
+            </label>
+        </>);
 
     return (
         <div>
@@ -47,9 +56,7 @@ export function Hooks() {
                     Year : &nbsp;
                     {getSelectOptions("Year")}
                 </label>
-                <br/><br/>
-                <label className="hookResult">{result}</label>
-                <br/><br/>
+                {result}
                 {submitButton}
             </div>
         </div>
